@@ -40,27 +40,29 @@ static int	get_max_bits(int max_num)
 
 static void	sort_stack(t_stack *a, t_stack *b, int size, int max_bits)
 {
-	int	i;
-	int	j;
-	int	num;
+	int i, j;
+	int num;
+	int count;
 
-    i = 0;
-    while (i < max_bits)
-    {
-        j = 0;
-        while (j < size)
-        {
-            num = a->data[0];
-            if (((num >> i) & 1) == 1)
-                rotate(a, "ra");
-            else
-                push_to(a, b, "pb");
-            j++;
-        }
-        while (b->top != -1)
-            push_to(b, a, "pa");
-        i++;
-    }
+	i = 0;
+	while (i < max_bits)
+	{
+		j = 0;
+		count = size;
+		while (j < count)
+		{
+			num = a->data[a->top];
+
+			if (((num >> i) & 1) == 1)
+				rotate(a, "ra");
+			else
+				push_to(a, b, "pb");
+			j++;
+		}
+		while (b->top != -1)
+			push_to(b, a, "pa");
+		i++;
+	}
 }
 
 void	radix_sort(t_stack *a, t_stack *b, int size)
