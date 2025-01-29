@@ -63,11 +63,10 @@ static void	sort_stack(t_stack *a, t_stack *b, int size, int max_bits)
     }
 }
 
-void	radix_sort(t_stack *a, t_stack *b)
+void	radix_sort(t_stack *a, t_stack *b, int size)
 {
 	int	max_num;
 	int	max_bits;
-	int	size;
 
 	size = a->top + 1;
 	max_num = get_max_num(a);
