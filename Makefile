@@ -5,7 +5,7 @@
 # Variables
 NAME := push_swap
 CC := cc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -g -fsanitize=address
 INCLUDES := -Iincludes -Ilibft -Ift_printf/includes
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
@@ -17,27 +17,11 @@ OBJ_DIR := obj
 
 SRC_FILES := \
     main.c \
-    parser.c \
-    error.c \
+    radix_sort.c \
+    print_error_and_exit.c \
+    push_to.c \
+    reverse_rotate.c \
     stack.c \
-    sort_stack.c \
-    find_partial_median.c \
-    find_max.c \
-    bring_to_top.c \
-    quicksort.c \
-    find_position.c \
-    extract_values.c \
-    operations/sa.c \
-    operations/sb.c \
-    operations/ss.c \
-    operations/pa.c \
-    operations/pb.c \
-    operations/ra.c \
-    operations/rb.c \
-    operations/rr.c \
-    operations/rra.c \
-    operations/rrb.c \
-    operations/rrr.c
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))

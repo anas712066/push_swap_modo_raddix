@@ -5,55 +5,72 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/26 20:13:50 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/01/26 20:15:40 by mumajeed         ###   ########.fr       */
+/*   Created: 2025/01/29 15:16:01 by mumajeed          #+#    #+#             */
+/*   Updated: 2025/01/29 16:09:50 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	get_max_bits(t_stack *stack)
+static int	get_max_num(t_stack *a)
 {
-	int		max;
-	int		bits;
-	t_node	*current;
+	int	max_num;
+	int	i;
 
-	max = stack->top->value;
-	bits = 0;
-	current = stack->top;
-	// Encuentra el valor máximo en la pila
-	while (current)
+	max_num = a->data[0];
+	i = 1;
+	while (i <= a->top)
 	{
-		if (current->value > max)
-			max = current->value;
-		current = current->next;
+		if (a->data[i] > max_num)
+			max_num = a->data[i];
+		i++;
 	}
-	// Calcula el número de bits necesarios para representar el máximo
-	while (max >> bits)
-		bits++;
-	return (bits);
+	return (max_num);
 }
 
-void	radix_sort(t_stack *a, t_stack *b)
+static int	get_max_bits(int max_num)
 {
 	int	max_bits;
 
-	max_bits = get_max_bits(a);
-	int i, j, size, num;
-	size = a->size;
-	for (i = 0; i < max_bits; i++) // Itera sobre cada bit
+	max_bits = 0;
+	while ((max_num >> max_bits) != 0)
+		max_bits++;
+	return (max_bits);
+}
+
+static void	sort_stack(t_stack *a, t_stack *b, int size, int max_bits)
+{
+	int	i;
+	int	j;
+	int	num;
+	int	initial_size;
+
+	i = 0;
+	while (i < max_bits)
 	{
 		j = 0;
-		while (j < size)
+		initial_size = size;
+		while (j < initial_size)
 		{
-			num = a->top->value;
-			if ((num >> i) & 1) // Si el bit está activado
-				ra(a);
-			else // Si el bit está desactivado
-				pb(a, b);
+			num = a->data[a->top];
+			if (((num >> i) & 1) == 1)
+				rotate(a, "ra");
+			else
+				push_to(a, b, "pb");
 			j++;
 		}
-		while (b->size > 0) // Devuelve los elementos de B a A
-			pa(a, b);
+		while (b->top != -1)
+			push_to(b, a, "pa");
+		i++;
 	}
+}
+
+void	radix_sort(t_stack *a, t_stack *b, int size)
+{
+	int	max_num;
+	int	max_bits;
+
+	max_num = get_max_num(a);
+	max_bits = get_max_bits(max_num);
+	sort_stack(a, b, size, max_bits);
 }
