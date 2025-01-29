@@ -50,7 +50,7 @@ static void	sort_stack(t_stack *a, t_stack *b, int size, int max_bits)
         j = 0;
         while (j < size)
         {
-            num = a->data[a->top];
+            num = a->data[0];
             if (((num >> i) & 1) == 1)
                 rotate(a, "ra");
             else
@@ -68,7 +68,6 @@ void	radix_sort(t_stack *a, t_stack *b, int size)
 	int	max_num;
 	int	max_bits;
 
-	size = a->top + 1;
 	max_num = get_max_num(a);
 	max_bits = get_max_bits(max_num);
 	sort_stack(a, b, size, max_bits);
