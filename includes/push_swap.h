@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:36:14 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/01/29 15:09:24 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:53:43 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 typedef struct s_stack
 {
-	int		*data;
-	int		top;
+	int		*data;// data es next_node?
+	int		top;// top es el numero/value?
 }	t_stack;
 
 void	radix_sort(t_stack *a, t_stack *b, int size);

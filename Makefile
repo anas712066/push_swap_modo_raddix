@@ -5,7 +5,7 @@
 # Variables
 NAME := push_swap
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS := -Wall -Wextra -Werror -g #-fsanitize=address
 INCLUDES := -Iincludes -Ilibft -Ift_printf/includes
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
