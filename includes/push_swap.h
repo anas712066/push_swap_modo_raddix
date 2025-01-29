@@ -25,7 +25,7 @@ typedef struct s_stack
 	int		top;
 }	t_stack;
 
-void	radix_sort(t_stack *a, t_stack *b, int size);
+void	radix_sort(t_stack *a, t_stack *b);
 void	push(t_stack *stack, int value);
 int		pop(t_stack *stack);
 void	swap(t_stack *stack, const char *op);

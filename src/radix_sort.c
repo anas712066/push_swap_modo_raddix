@@ -43,32 +43,31 @@ static void	sort_stack(t_stack *a, t_stack *b, int size, int max_bits)
 	int	i;
 	int	j;
 	int	num;
-	int	initial_size;
 
-	i = 0;
-	while (i < max_bits)
-	{
-		j = 0;
-		initial_size = size;
-		while (j < initial_size)
-		{
-			num = a->data[a->top];
-			if (((num >> i) & 1) == 1)
-				rotate(a, "ra");
-			else
-				push_to(a, b, "pb");
-			j++;
-		}
-		while (b->top != -1)
-			push_to(b, a, "pa");
-		i++;
-	}
+    i = 0;
+    while (i < max_bits)
+    {
+        j = 0;
+        while (j < size)
+        {
+            num = a->data[a->top];
+            if (((num >> i) & 1) == 1)
+                rotate(a, "ra");
+            else
+                push_to(a, b, "pb");
+            j++;
+        }
+        while (b->top != -1)
+            push_to(b, a, "pa");
+        i++;
+    }
 }
 
-void	radix_sort(t_stack *a, t_stack *b, int size)
+void	radix_sort(t_stack *a, t_stack *b)
 {
 	int	max_num;
 	int	max_bits;
+	int	size;
 
 	size = a->top + 1;
 	max_num = get_max_num(a);
