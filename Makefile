@@ -16,12 +16,10 @@ SRC_DIR := src
 OBJ_DIR := obj
 
 SRC_FILES := \
-    main.c \
-    radix_sort.c \
-    print_error_and_exit.c \
-    push_to.c \
-    reverse_rotate.c \
-    stack.c \
+	main.c \
+	radix_sort.c \
+	error_handling.c \
+	is_sorted.c \
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))

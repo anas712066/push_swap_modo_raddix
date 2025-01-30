@@ -18,20 +18,14 @@
 # include <unistd.h>
 # include "../ft_printf/includes/ft_printf.h"
 # include <limits.h>
+# include <stdio.h>
 
-typedef struct s_stack
-{
-	int		*data;// data es next_node?
-	int		top;// top es el numero/value?
-}	t_stack;
-
-void	radix_sort(t_stack *a, t_stack *b, int size);
-void	push(t_stack *stack, int value);
-int		pop(t_stack *stack);
-void	swap(t_stack *stack, const char *op);
-void	rotate(t_stack *stack, const char *op);
-void	reverse_rotate(t_stack *stack, const char *op);
-void	push_to(t_stack *src, t_stack *dst, const char *op);
-void	print_error_and_exit(void);
+//void    radix_sort(t_list **stack_a);
+t_list  *parse_arguments(int argc, char **argv);
+int     is_sorted(t_list *stack);
+void    print_error_and_exit(void);
+int     is_valid_number(char *str);
+int     has_duplicates(t_list *head, int num);
+void    sort_stack(t_list **stack_a);
 
 #endif
